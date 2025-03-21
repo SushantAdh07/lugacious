@@ -11,7 +11,7 @@
 
 <body>
     {{ View::make('frontend.body.header') }}
-
+    @yield('hero')
 </body>
 
 </html>
