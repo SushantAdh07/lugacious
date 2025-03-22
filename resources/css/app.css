@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/fonts/Bayon-Regular.ttf') format('tff');
+
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
