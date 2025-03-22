@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
+            $table->string('store_name');
+            $table->text('store_description');
+            $table->string('store_category');
+            $table->string('store_image');
+            $table->integer('store_followers');
+            $table->string('store_insta');
             $table->timestamps();
         });
     }

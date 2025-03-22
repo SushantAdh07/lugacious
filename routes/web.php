@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\StoreController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,11 @@ Route::middleware('auth')->group(function () {
 //Frontend
 Route::controller(HomeController::class)->group(function(){
     Route::get('/home', 'index')->name('home');
-
 });
+
+Route::controller(StoreController::class)->group(function(){
+    Route::get('/store/{id}', 'storeDetails')->name('store-details');
+});
+
 
 require __DIR__.'/auth.php';
