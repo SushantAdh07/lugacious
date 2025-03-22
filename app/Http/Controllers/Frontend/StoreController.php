@@ -10,6 +10,6 @@ class StoreController extends Controller
 {
     public function storeDetails($id){
         $store = Store::findOrFail($id);
-        return view('frontend.store.storedetails');
+        return view('frontend.store.storedetails', compact('store'));
     }
 }
