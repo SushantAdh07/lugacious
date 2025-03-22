@@ -31,5 +31,12 @@
             </div>
         </div>
 
+        <div class="border-t border-gray-200 mx-8"></div>
+
+        <div class="mt-10">
+            <a href="{{ route('new-store') }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Click Me
+            </a>
+        </div>
     </div>
 @endsection

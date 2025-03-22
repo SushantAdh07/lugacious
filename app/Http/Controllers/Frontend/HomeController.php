@@ -10,6 +10,6 @@ class HomeController extends Controller
 {
     public function index(){
         $stores = Store::latest()->get();
-        return view('frontend.body.hero', compact('stores'));
+        return view('frontend.Body.hero', compact('stores'));
     }
 }
