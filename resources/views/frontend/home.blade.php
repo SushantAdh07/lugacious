@@ -15,6 +15,7 @@
 <body class="font-body">
     {{ View::make('frontend.body.header') }}
     @yield('hero')
+    {{ View::make('frontend.body.footer') }}
 </body>
 
 </html>
