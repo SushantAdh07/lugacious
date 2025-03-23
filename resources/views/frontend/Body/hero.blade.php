@@ -23,7 +23,8 @@
                             <!-- Name -->
                             <p class="mt-4 text-lg font-bayon text-[#5E5B59] text-center">
                                 {{ $store->store_name }}</p>
-                            <button class="bg-[#BF8E43] font-bold rounded-lg text-white px-6 py-3 text-sm">Add to
+                            <button class="bg-[#BF8E43] font-bold rounded-lg text-white px-6 py-3 text-sm">Add
+                                to
                                 Favorites</button>
                         </a>
                     </div>
@@ -35,7 +36,7 @@
 
         <div class="mt-10">
             <a href="{{ route('new-store') }}" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-                Click Me
+                Create Your Store
             </a>
         </div>
     </div>

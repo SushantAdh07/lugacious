@@ -26,9 +26,8 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{id}', 'storeDetails')->name('store-details');
-    Route::get('/create-store', 'newStore')->name('new-store');
+    Route::get('/create-store', 'newStore')->name('new-store')->middleware('auth');
     Route::post('/store/create', 'createStore')->name('create-store');
 });
-
 
 require __DIR__.'/auth.php';
