@@ -6,9 +6,7 @@
                     <img src="{{ asset('images/logo.png') }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
 
                 </a>
-
-                <a href="{{ route('blog') }}">Blog</a>
-
+                <a href="{{ route('blog') }}">Blog Page</a>
                 @auth
                     <div class="flex items-center lg:order-2">
                         <a href=""
