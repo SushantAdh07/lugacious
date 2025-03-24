@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRequest;
 use App\Models\Store;
 use Illuminate\Http\Request;
+
 
 class StoreController extends Controller
 {
@@ -17,15 +19,8 @@ class StoreController extends Controller
         return view('frontend.store.storedetails', compact('store'));
     }
 
-    public function createStore(Request $request){
-        Store::insert([
-            'store_name'=>$request->store_name,
-            'store_description'=>$request->store_description,
-            'store_category'=>$request->store_category,
-            'store_image' =>$request->store_image,
-            'store_followers'=>$request->store_followers,
-            'store_insta'=>$request->store_insta,
-        ]);
+    public function createStore(Store $store, StoreRequest $request){
+        $store->create($request->validated());
 
         return redirect()->back();
     }
