@@ -7,6 +7,8 @@
 
                 </a>
 
+                <a href="{{ route('blog') }}">Blog</a>
+
                 @auth
                     <div class="flex items-center lg:order-2">
                         <a href=""
