@@ -22,7 +22,7 @@ class StoreController extends Controller
     public function createStore(Store $store, StoreRequest $request){
         $store->create($request->validated());
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Approval Sent for Store Creation!');
     }
 
     
