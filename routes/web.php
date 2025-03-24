@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\StoreController;
 use App\Http\Controllers\ProfileController;
@@ -28,6 +29,10 @@ Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{id}', 'storeDetails')->name('store-details');
     Route::get('/create-store', 'newStore')->name('new-store')->middleware('auth');
     Route::post('/store/create', 'createStore')->name('create-store');
+});
+
+Route::controller(BlogController::class)->group(function(){
+    Route::get('/blog', 'index')->name('blog');
 });
 
 require __DIR__.'/auth.php';
