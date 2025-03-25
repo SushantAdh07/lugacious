@@ -6,9 +6,6 @@ use App\Http\Controllers\Frontend\StoreController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -22,7 +19,7 @@ Route::middleware('auth')->group(function () {
 
 //Frontend
 Route::controller(HomeController::class)->group(function(){
-    Route::get('/home', 'index')->name('home');
+    Route::get('/', 'index')->name('home');
 });
 
 Route::controller(StoreController::class)->group(function(){
