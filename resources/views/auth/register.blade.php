@@ -70,6 +70,16 @@
                                 class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
                         </p>
                     </form>
+                    @if ($errors->any())
+                        <div
+                            class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
