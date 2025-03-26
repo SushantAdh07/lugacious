@@ -1,5 +1,5 @@
 <footer>
-    <div class="bg-[#BF8E43] flex flex-col items-center text-white py-4">
+    <div class="bg-[#BF8e43] flex flex-col items-center text-white py-4">
         <div>
             By @Pulpious
         </div>

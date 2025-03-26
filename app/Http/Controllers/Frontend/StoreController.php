@@ -24,7 +24,7 @@ class StoreController extends Controller
 {
     try {
         $store = Auth::user()->stores()->create($request->validated());
-        return redirect('home')->with('success', 'Store created successfully!');
+        return redirect('/')->with('success', 'Store created successfully!');
     } catch (\Exception $e) {
         return back()->withInput()->with('error', 'Error creating store: '.$e->getMessage());
     }

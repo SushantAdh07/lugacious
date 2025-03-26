@@ -10,4 +10,12 @@ class BlogController extends Controller
     public function index(){
         return view('frontend.blog.blog');
     }
+
+    public function createBlog(){
+        return view('frontend.blog.create');
+    }
+
+    public function storeBlog(){
+        
+    }
 }

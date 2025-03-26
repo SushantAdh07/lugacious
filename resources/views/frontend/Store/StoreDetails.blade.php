@@ -2,7 +2,7 @@
 @section('hero')
     <div class="w-full max-w-6xl mx-auto">
         <div class="w-full flex justify-center pt-8 pb-4 relative">
-            <a href="{{ route('home') }}" class="absolute left-0 text-[#BF8E43] hover:text-gray-800 transition duration-300">
+            <a href="{{ route('home') }}" class="absolute left-0 text-[#BF8e43] hover:text-gray-800 transition duration-300">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
                     </path>
@@ -28,7 +28,7 @@
                 <p class="text-gray-600"><span class="font-semibold">Instagram Followers:</span>
                     {{ $store->store_followers }}</p>
                 <button
-                    class="bg-[#BF8E43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8E43] hover:border-[#1915014a] border">Add
+                    class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Add
                     to
                     Favorites</button>
             </div>
