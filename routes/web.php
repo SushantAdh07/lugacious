@@ -30,6 +30,7 @@ Route::controller(StoreController::class)->group(function(){
 
 Route::controller(BlogController::class)->group(function(){
     Route::get('/blog', 'index')->name('blog');
+    Route::get('/blog/create', 'createBlog')->name('create-blog');
 });
 
 require __DIR__.'/auth.php';
