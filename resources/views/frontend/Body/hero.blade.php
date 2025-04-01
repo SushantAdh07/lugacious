@@ -17,7 +17,8 @@
                                 <!-- Image Container -->
                                 <div class="w-48 h-48 rounded-lg flex items-center justify-center overflow-hidden">
                                     <!-- Image -->
-                                    <img src="{{ $store->store_image }}" alt="Store Image" class="w-full h-full object-cover">
+                                    <img src="{{ asset('storage/app/public/images' . $store->store_image) }}"
+                                        alt="Store Image" class="w-full h-full object-cover">
                                 </div>
                             </div>
                             <!-- Name -->
