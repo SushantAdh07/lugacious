@@ -4,8 +4,6 @@
 
         <h2 class="text-xl font-body text-[#5E5B59]">SHOPS</h2>
 
-
-
         <div class="w-full max-w-6xl mt-8 mx-auto">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-24 gap-y-16">
 
