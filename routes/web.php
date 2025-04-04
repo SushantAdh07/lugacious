@@ -36,6 +36,6 @@ Route::controller(BlogController::class)->group(function(){
 //Backend
 Route::get('/admin', function(){
     return view('backend.admin-dashboard');
-})->middleware('handle');
+})->middleware(App\Http\Middleware\AuthMiddleware::class);
 
 require __DIR__.'/auth.php';
