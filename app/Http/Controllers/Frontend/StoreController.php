@@ -44,7 +44,8 @@ class StoreController extends Controller
     }
 
     public function deleteStore($id){
-        return $this->storeRepository->delete($id);
+        $this->storeRepository->delete($id);
+        return redirect()->route('home');
     }
   
 }

@@ -18,7 +18,7 @@ class StoreRepository implements StoreRepositoryInterface{
     }
 
     public function find($id){
-        //
+        return $this->model->findOrFail($id);
     }
 
     public function create($data){

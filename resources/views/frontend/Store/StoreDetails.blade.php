@@ -32,7 +32,7 @@
                     to
                     Favorites</button>
             </div>
-            <a class="bg-black" href="{{ route('deleteStore', $store->id) }}">Delete</a>
+            <a class="bg-black" href="{{ route('delete-store', $store->id) }}">Delete</a>
 
 
 
