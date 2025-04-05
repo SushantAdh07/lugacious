@@ -23,7 +23,7 @@ class StoreController extends Controller
     }
     
     public function storeDetails($id){
-        $store = $this->storeRepository->all();
+        $store = $this->storeRepository->find($id);
         return view('frontend.store.storedetails', compact('store'));
     }
 
