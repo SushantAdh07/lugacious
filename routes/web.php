@@ -26,6 +26,7 @@ Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{id}', 'storeDetails')->name('store-details');
     Route::get('/create-store', 'newStore')->name('new-store')->middleware('auth');
     Route::post('/store/create', 'createStore')->name('create-store');
+    Route::delete('/delete', 'deleteStore')->name('delete.store');
 });
 
 Route::controller(BlogController::class)->group(function(){

@@ -28,18 +28,23 @@ class StoreController extends Controller
     }
 
     public function createStore(StoreRequest $request)
-{
-        $data = $request->validated();
+    {
+            $data = $request->validated();
 
-        if ($request->hasFile('store_image')){
-            $imagePath = $request->file('store_image')->store('images', 'public');
-            $data['store_image'] = $imagePath;
-        }
+            if ($request->hasFile('store_image')){
+                $imagePath = $request->file('store_image')->store('images', 'public');
+                $data['store_image'] = $imagePath;
+            }
 
-        $this->storeRepository->create($data);
-        
-        return redirect()->route('home');
-}
+            $data['user_id'] = Auth::id();
 
-    
+            $this->storeRepository->create($data);
+            
+            return redirect()->route('home');
+    }
+
+    public function deleteStore($id){
+        return $this->storeRepository->delete($id);
+    }
+  
 }

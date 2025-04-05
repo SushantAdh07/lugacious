@@ -30,6 +30,6 @@ class StoreRepository implements StoreRepositoryInterface{
     }
 
     public function delete($id){
-        //
+        return $this->model->destroy($id);
     }
 }
