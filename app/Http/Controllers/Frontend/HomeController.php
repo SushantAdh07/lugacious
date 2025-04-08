@@ -10,6 +10,7 @@ class HomeController extends Controller
 {
     public function index(){
         $stores = Store::latest()->get();
+        //dd($stores);
        if (!$stores){
         return view('errors.404');
        } else{

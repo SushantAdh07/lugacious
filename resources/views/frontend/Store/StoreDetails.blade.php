@@ -8,8 +8,8 @@
                     </path>
                 </svg>
             </a>
-            <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
-                <img src="" alt="Store Image" class="w-full h-full object-cover">
+            <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg shadow-[#BF8e43]">
+                <img src="{{ asset($store->store_image) }}" alt="Store Image" class="w-full h-full object-cover">
             </div>
         </div>
 
@@ -31,8 +31,10 @@
                     class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Add
                     to
                     Favorites</button>
+                <a
+                    class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Delete</a>
             </div>
-            <a class="bg-black" href="{{ route('delete-store', $store->id) }}">Delete</a>
+
 
 
 
