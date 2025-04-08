@@ -28,7 +28,6 @@ class StoreController extends Controller
         if(!$store){
             return view('errors.404');
         }
-        
         return view('frontend.store.storedetails', compact('store'));
     }
 
