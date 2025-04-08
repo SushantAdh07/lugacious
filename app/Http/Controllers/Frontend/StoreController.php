@@ -24,6 +24,11 @@ class StoreController extends Controller
     
     public function storeDetails($id){
         $store = $this->storeRepository->find($id);
+
+        if(!$store){
+            return view('errors.404');
+        }
+        
         return view('frontend.store.storedetails', compact('store'));
     }
 
