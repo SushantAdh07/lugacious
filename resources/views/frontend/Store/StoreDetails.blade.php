@@ -36,8 +36,8 @@
                             src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
                     </div>
                     <div style="max-width: 400px; max-height: 600px; overflow: auto;">
-                        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/leomessi"
-                            data-instgrm-version="14">
+                        <blockquote class="instagram-media"
+                            data-instgrm-permalink="https://www.instagram.com/trendy_corner02" data-instgrm-version="14">
                             <!-- Instagram will load the feed here -->
                         </blockquote>
                         <script async src="//www.instagram.com/embed.js"></script>

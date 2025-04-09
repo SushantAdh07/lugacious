@@ -18,6 +18,13 @@ Route::middleware('auth')->group(function () {
 });
 
 //Frontend
+
+//Test
+
+Route::get('/feed', function(){
+    return view('frontend.store.feed');
+});
+
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home');
 });
