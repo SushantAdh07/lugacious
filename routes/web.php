@@ -21,9 +21,7 @@ Route::middleware('auth')->group(function () {
 
 //Test
 
-Route::get('/feed', function(){
-    return view('frontend.store.feed');
-});
+
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home');
@@ -33,7 +31,9 @@ Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{store}', 'storeDetails')->name('store-details');
     Route::get('/create-store', 'newStore')->name('new-store')->middleware('auth');
     Route::post('/store/create', 'createStore')->name('create-store');
+    //test
     Route::get('/delete/{store}', 'deleteStore')->name('delete-store');
+    Route::get('/feed', 'feed');
 });
 
 Route::controller(BlogController::class)->group(function(){

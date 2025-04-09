@@ -18,6 +18,18 @@ class StoreController extends Controller
         $this->storeRepository = $storeRepository;
     }
 
+    public function feed(){
+        $links = [
+            'https://www.instagram.com/trendy_corner02',
+            'https://www.instagram.com/dreamclosetnp',
+            'https://www.instagram.com/street___kulture',
+            'https://www.instagram.com/avenue_outlet',
+            'https://www.instagram.com/dresscamp_mens_officials',
+            'https://www.instagram.com/the_white_tonee_bhaktapur',
+        ];
+        return view('frontend.store.feed', compact('links'));
+    }
+
     public function newStore(){
         return view('frontend.store.createstore');
     }
