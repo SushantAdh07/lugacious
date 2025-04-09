@@ -26,6 +26,9 @@ class StoreController extends Controller
             'https://www.instagram.com/avenue_outlet',
             'https://www.instagram.com/dresscamp_mens_officials',
             'https://www.instagram.com/the_white_tonee_bhaktapur',
+            'https://www.instagram.com/skcloset2.o/',
+            'https://www.instagram.com/nep.aesthetics/',
+            'https://www.instagram.com/adaptnepal/',
         ];
         return view('frontend.store.feed', compact('links'));
     }
