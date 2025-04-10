@@ -29,6 +29,22 @@ class StoreController extends Controller
             'https://www.instagram.com/skcloset2.o/',
             'https://www.instagram.com/nep.aesthetics/',
             'https://www.instagram.com/adaptnepal/',
+            'https://www.instagram.com/s_sclothing_nepal/',
+            'https://www.instagram.com/unico.clo.np/',
+            'https://www.instagram.com/korean_fashion_nepal/',
+            'https://www.instagram.com/kaalo_fhalaamofficial/',
+            'https://www.instagram.com/bspokeclo/',
+            'https://www.instagram.com/huba.official/',
+            'https://www.instagram.com/thapacollection_official/',
+            'https://www.instagram.com/s_matching_nepal/',
+            'https://www.instagram.com/dripcreationbyjibica/',
+            'https://www.instagram.com/unanimous.np/',
+            'https://www.instagram.com/evan_originals/',
+            'https://www.instagram.com/arlo.nepal/',
+            'https://www.instagram.com/lamad_closet/',
+            'https://www.instagram.com/instylenepalofficial/',
+            'https://www.instagram.com/newstyle_fashionwear_official/',
+
         ];
         return view('frontend.store.feed', compact('links'));
     }
