@@ -20,7 +20,9 @@ Route::middleware('auth')->group(function () {
 //Frontend
 
 //Test
-
+Route::get('/users-choice', function(){
+    return view('frontend.store.usersChoice');
+})->name('users.choice');
 
 
 Route::controller(HomeController::class)->group(function(){
@@ -31,8 +33,8 @@ Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{store}', 'storeDetails')->name('store-details');
     Route::get('/create-store', 'newStore')->name('new-store')->middleware('auth');
     Route::post('/store/create', 'createStore')->name('create-store');
-    //test
     Route::get('/delete/{store}', 'deleteStore')->name('delete-store');
+    //test
     Route::get('/feed', 'feed');
 });
 

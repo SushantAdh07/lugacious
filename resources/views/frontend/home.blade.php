@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="font-body min-h-screen flex flex-col bg-white">
+<body class="font-sans min-h-screen flex flex-col bg-white">
     {{ View::make('frontend.Body.header') }}
 
     <main class="flex-grow relative"> <!-- Added relative here -->
