@@ -30,18 +30,18 @@
                 <p>Recent Items</p>
 
 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div>
-                        <img class="h-auto max-w-full rounded-lg"
-                            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+                <div class="">
+
+                    <div style="width: 80%; max-width: 800px; height:600px; margin: 0 auto; overflow: hidden;">
+                        <div style="width: 100%; height: 100%; overflow-y: auto;">
+                            <blockquote class="instagram-media"
+                                data-instgrm-permalink="https://www.instagram.com/trendy_corner02" data-instgrm-version="14"
+                                style="width: 100%; min-height: 100%; border: none;"></blockquote>
+                        </div>
                     </div>
-                    <div style="max-width: 400px; max-height: 600px; overflow: auto;">
-                        <blockquote class="instagram-media"
-                            data-instgrm-permalink="https://www.instagram.com/trendy_corner02" data-instgrm-version="14">
-                            <!-- Instagram will load the feed here -->
-                        </blockquote>
-                        <script async src="//www.instagram.com/embed.js"></script>
-                    </div>
+
+                    <!-- Load the script ONCE per page (place at the bottom of your Blade file) -->
+                    <script async src="//www.instagram.com/embed.js"></script>
 
                 </div>
 
