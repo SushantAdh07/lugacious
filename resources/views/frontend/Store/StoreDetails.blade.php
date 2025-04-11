@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <!-- Load the script ONCE per page (place at the bottom of your Blade file) -->
+
                     <script async src="//www.instagram.com/embed.js"></script>
 
                 </div>

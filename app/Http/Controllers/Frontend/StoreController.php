@@ -78,6 +78,14 @@ class StoreController extends Controller
             return redirect()->route('home');
     }
 
+    public function edit($id){
+        return view('frontend.store.edit');
+    }
+
+    public function update($id, $data){
+        //
+    }
+
     public function deleteStore($id){
         $this->storeRepository->delete($id);
         return redirect()->route('home');
