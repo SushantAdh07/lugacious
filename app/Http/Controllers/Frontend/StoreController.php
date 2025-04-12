@@ -79,11 +79,23 @@ class StoreController extends Controller
     }
 
     public function edit($id){
-        return view('frontend.store.edit');
+        $store = $this->storeRepository->find($id);
+        return view('frontend.store.edit', compact('store'));
     }
 
-    public function update($id, $data){
-        //
+    public function update(StoreRequest $request, $id){
+        $data = $request->validated();
+
+            if ($request->hasFile('store_image')){
+                $imagePath = $request->file('store_image')->store('images', 'public');
+                $data['store_image'] = $imagePath;
+            }
+
+            $data['user_id'] = Auth::id();
+
+            $this->storeRepository->update($data, $id);
+            
+            return redirect()->route('home');
     }
 
     public function deleteStore($id){
