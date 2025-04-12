@@ -33,7 +33,7 @@ Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{store}', 'storeDetails')->name('store-details');
     Route::get('/create-store', 'newStore')->name('new-store')->middleware('auth');
     Route::post('/store/create', 'createStore')->name('create-store');
-    Route::get('/store/{store}', 'edit')->name('edit-store');
+    Route::get('/store/edit/{store}', 'edit')->name('edit-store');
     Route::post('/store/update/{store}', 'update')->name('update-store');
     Route::get('/delete/{store}', 'deleteStore')->name('delete-store');
     //test
