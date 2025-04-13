@@ -26,7 +26,9 @@ class StoreRepository implements StoreRepositoryInterface{
     }
 
     public function update($id, $data){
-        //
+        $store = $this->model->findOrFail($id);
+        $store->update($data);
+        return $store;
     }
 
     public function delete($id){
