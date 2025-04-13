@@ -84,6 +84,7 @@ class StoreController extends Controller
     }
 
     public function update(StoreRequest $request, $id){
+        
         $data = $request->validated();
 
             if ($request->hasFile('store_image')){

@@ -3,13 +3,13 @@
     <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add your Store</h2>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('update-store', $store->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                     <div class="sm:col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Store
                             Name</label>
-                        <input type="text" name="store_name" id="name" value=""
+                        <input type="text" name="store_name" id="name" value="{{ $store->store_name }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Type product name" required="">
                     </div>
@@ -28,12 +28,12 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                         <textarea id="description" name="store_description" rows="8"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Your description here"></textarea>
+                            placeholder="Your description here">{{ $store->store_description }}</textarea>
                     </div>
                     <div class="sm:col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Store
                             Followers</label>
-                        <input type="text" name="store_followers" id="name"
+                        <input type="text" name="store_followers" id="name" value="{{ $store->store_followers }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Type product name" required="">
                     </div>
@@ -41,28 +41,42 @@
                     <div class="sm:col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Store
                             Link</label>
-                        <input type="text" name="store_insta" id="name"
+                        <input type="text" name="store_insta" id="name" value="{{ $store->store_insta }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                             placeholder="Type product name" required="">
                     </div>
 
                     <div class="mb-3">
-                        <label for="formFile" class="form-label">Default file input example</label>
+                        <label for="formFile" class="form-label">Store Image</label>
                         <input name="store_image" class="form-control" type="file" id="formFile">
                     </div>
+
+
+                    @if ($store->store_image)
+                        <div class="mb-3">
+                            <p>Current Image:</p>
+                            <img src="{{ asset('storage/' . $store->store_image) }}"
+                                style="max-width: 200px; margin-top: 10px;">
+                        </div>
+                    @endif
+
+
                     <img id="imagePreview" style="display: none; max-width: 200px; margin-top: 10px;">
+
                     <script>
                         document.getElementById('formFile').addEventListener('change', function(event) {
                             const file = event.target.files[0];
+                            const preview = document.getElementById('imagePreview');
 
                             if (file) {
                                 const reader = new FileReader();
                                 reader.onload = function(e) {
-                                    const img = document.getElementById('imagePreview');
-                                    img.src = e.target.result;
-                                    img.style.display = 'block';
+                                    preview.src = e.target.result;
+                                    preview.style.display = 'block';
                                 };
                                 reader.readAsDataURL(file);
+                            } else {
+                                preview.style.display = 'none';
                             }
                         });
                     </script>
