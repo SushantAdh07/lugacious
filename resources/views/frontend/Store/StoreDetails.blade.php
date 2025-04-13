@@ -27,6 +27,13 @@
                 <p class="text-gray-600"><span class="font-semibold">Category:</span> {{ $store->store_category }}</p>
                 <p class="text-gray-600"><span class="font-semibold">Instagram Followers:</span>
                     {{ $store->store_followers }}</p>
+                <div class="mt-3">
+                    <a href="{{ route('edit-store', $store->id) }}"
+                        class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Edit</a>
+                    <a
+                        class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Delete</a>
+                </div>
+                <hr>
                 <p>Recent Items</p>
 
 
@@ -45,12 +52,7 @@
 
                 </div>
 
-                <button
-                    class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Add
-                    to
-                    Favorites</button>
-                <a
-                    class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Delete</a>
+
             </div>
 
 
