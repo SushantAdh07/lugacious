@@ -32,5 +32,11 @@
                 </div>
             @endforeach
         </div>
+        @if (auth()->check() && auth()->user()->role === 'admin')
+            <div class="border-t border-gray-200"></div>
+            <a href="{{ route('new-store') }}" type="button"
+                class="inline-flex items-center px-4 py-3 text-sm font-medium font-sans text-center text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">Add
+                Store</a>
+        @endif
     </div>
 @endsection

@@ -27,7 +27,7 @@
                 <p class="text-gray-600"><span class="font-semibold">Store Name:</span> {{ $store->store_name }}</p>
                 <p class="text-gray-600"><span class="font-semibold">Category:</span> {{ $store->store_category }}</p>
                 <p class="text-gray-600"><span class="font-semibold">Instagram Followers:</span>
-                    {{ $store->store_followers }}</p>
+                    {{ $store->store_followers }}+</p>
                 <div class="mt-3">
                     <a href="{{ route('edit-store', $store->id) }}"
                         class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Edit</a>
@@ -42,9 +42,8 @@
 
                     <div style="width: 80%; max-width: 800px; height:600px; margin: 0 auto; overflow: hidden;">
                         <div style="width: 100%; height: 100%; overflow-y: auto;">
-                            <blockquote class="instagram-media"
-                                data-instgrm-permalink="https://www.instagram.com/trend.station01" data-instgrm-version="14"
-                                style="width: 100%; min-height: 100%; border: none;"></blockquote>
+                            <blockquote class="instagram-media" data-instgrm-permalink="{{ $store->store_insta }}"
+                                data-instgrm-version="14" style="width: 100%; min-height: 100%; border: none;"></blockquote>
                         </div>
                     </div>
 
