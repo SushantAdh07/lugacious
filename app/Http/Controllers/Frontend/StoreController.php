@@ -83,7 +83,11 @@ class StoreController extends Controller
         return view('frontend.store.edit', compact('store'));
     }
 
-    public function update(StoreRequest $request, $id){
+    public function update(StoreRequest $request, Store $store){
+
+        if(!auth()->check()){
+            return redirect()->route('login')->with('error', 'Please login to edit the store.');
+        }
         
         $data = $request->validated();
 
@@ -92,9 +96,10 @@ class StoreController extends Controller
                 $data['store_image'] = $imagePath;
             }
 
+            
             $data['user_id'] = Auth::id();
 
-            $this->storeRepository->update($data, $id);
+            $this->storeRepository->update($store->id, $data);
             
             return redirect()->route('home');
     }
