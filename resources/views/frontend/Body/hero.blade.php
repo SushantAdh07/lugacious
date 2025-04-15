@@ -9,7 +9,8 @@
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('store-details', $store->id) }}">
-                        <img class="w-full h-48 object-cover" src="{{ asset($store->store_image) }}" alt="" />
+                        <img class="p-5 object-contain mx-auto" src="{{ asset('storage/' . $store->store_image) }}"
+                            alt="" />
                     </a>
                     <div class="p-5">
                         <a href="{{ route('store-details', $store->id) }}">
@@ -31,9 +32,5 @@
                 </div>
             @endforeach
         </div>
-    </div>
-    <div class="border-t border-gray-200 mx-8"></div>
-    <a href="{{ route('new-store') }}" type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</a>
     </div>
 @endsection

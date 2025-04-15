@@ -8,8 +8,9 @@
                     </path>
                 </svg>
             </a>
-            <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg shadow-[#BF8e43]">
-                <img src="{{ asset($store->store_image) }}" alt="Store Image" class="w-full h-full object-cover">
+            <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-md shadow-[#E3E1E0]">
+                <img src="{{ asset('storage/' . $store->store_image) }}" alt="Store Image"
+                    class="w-full h-full object-cover">
             </div>
         </div>
 
@@ -42,7 +43,7 @@
                     <div style="width: 80%; max-width: 800px; height:600px; margin: 0 auto; overflow: hidden;">
                         <div style="width: 100%; height: 100%; overflow-y: auto;">
                             <blockquote class="instagram-media"
-                                data-instgrm-permalink="https://www.instagram.com/trendy_corner02" data-instgrm-version="14"
+                                data-instgrm-permalink="https://www.instagram.com/trend.station01" data-instgrm-version="14"
                                 style="width: 100%; min-height: 100%; border: none;"></blockquote>
                         </div>
                     </div>
