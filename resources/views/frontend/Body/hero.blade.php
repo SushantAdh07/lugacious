@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Str;
+@endphp
+
 @extends('frontend.home')
 @section('hero')
     <div class="min-h-screen bg-[#FAF7F6] flex flex-col items-center px-3 py-10">
@@ -9,7 +13,7 @@
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('store-details', $store->id) }}">
-                        <img class="p-5 object-contain mx-auto" src="{{ asset('storage/' . $store->store_image) }}"
+                        <img class="p-5 object-contain w-60 h-60 mx-auto" src="{{ asset('storage/' . $store->store_image) }}"
                             alt="" />
                     </a>
                     <div class="p-5">
@@ -18,7 +22,7 @@
                                 {{ $store->store_name }}</h5>
                         </a>
                         <p class="mb-3 font-sans font-normal text-gray-700 dark:text-gray-400">
-                            {{ $store->store_description }}</p>
+                            {{ Str::limit($store->store_description, 75, '...') }}</p>
                         <a href="{{ route('store-details', $store->id) }}"
                             class="inline-flex items-center px-3 py-2 text-sm font-medium font-sans text-center text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Read more
