@@ -8,12 +8,12 @@
 
         <h2 class="text-xl font-sans font-bold text-[#5E5B59]">SHOPS</h2>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 px-24">
             @foreach ($stores as $store)
                 <div
                     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
                     <a href="{{ route('store-details', $store->id) }}">
-                        <img class="p-5 object-contain w-60 h-60 mx-auto" src="{{ asset('storage/' . $store->store_image) }}"
+                        <img class="p-5 object-contain w-48 h-48 mx-auto" src="{{ asset('storage/' . $store->store_image) }}"
                             alt="" />
                     </a>
                     <div class="p-5">
