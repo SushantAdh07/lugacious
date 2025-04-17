@@ -14,7 +14,7 @@
 <body>
     <section class="bg-gray-50 dark:bg-gray-900 font-sans">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+            <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
                 <img class="mr-2" src="{{ asset('images/logo.png') }}" alt="logo">
             </a>
             @if (session('error'))
@@ -61,7 +61,7 @@
                                 password?</a>
                         </div>
                         <button type="submit"
-                            class="w-full px-5 py-2.5 text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border ">Sign
+                            class="w-full px-5 py-2.5 text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">Log
                             in</button>
                         <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Don’t have an account yet? <a href="{{ route('register') }}"
