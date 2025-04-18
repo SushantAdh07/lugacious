@@ -30,33 +30,59 @@
                     {{ $store->store_followers }}+</p>
                 <div class="mt-3">
                     @if (Auth::check() && Auth::user()->role === 'admin')
-                    <a href="{{ route('edit-store', $store->id) }}"
-                        class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Edit</a>
-                       
-                    <a
-                        class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Delete</a>
+                        <a href="{{ route('edit-store', $store->id) }}"
+                            class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Edit</a>
+
+                        <a
+                            class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Delete</a>
                     @endif
                     <a href=""
-                        class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Add to Favorites</a>
-                        
+                        class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Add
+                        to Favorites</a>
+
                 </div>
                 <hr>
                 <p>Recent Items</p>
 
 
-                <div class="">
+                <div class="relative bg-gray-200 rounded-lg animate-pulse"
+                    style="width: 80%; max-width: 800px; height: 600px; margin: 0 auto;">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                        </svg>
+                    </div>
 
-                    <div style="width: 80%; max-width: 800px; height:600px; margin: 0 auto; overflow: hidden;">
+                    <div class="instagram-embed-container"
+                        style="width: 100%; height: 100%; overflow: hidden; display: none;">
                         <div style="width: 100%; height: 100%; overflow-y: auto;">
                             <blockquote class="instagram-media" data-instgrm-permalink="{{ $store->store_insta }}"
                                 data-instgrm-version="14" style="width: 100%; min-height: 100%; border: none;"></blockquote>
                         </div>
                     </div>
-
-
-                    <script async src="//www.instagram.com/embed.js"></script>
-
                 </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const container = document.querySelector('.instagram-embed-container');
+                        const placeholder = container.previousElementSibling;
+
+                        const script = document.createElement('script');
+                        script.src = '//www.instagram.com/embed.js';
+                        script.async = true;
+
+                        script.onload = function() {
+                            placeholder.style.display = 'none';
+                            container.style.display = 'block';
+
+                            if (typeof instgrm !== 'undefined') {
+                                instgrm.Embeds.process();
+                            }
+                        };
+
+                        document.body.appendChild(script);
+                    });
+                </script>
 
 
             </div>
