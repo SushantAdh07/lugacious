@@ -67,8 +67,8 @@ class StoreController extends Controller
             $data = $request->validated();
 
             if ($request->hasFile('store_image')){
-                $imagePath = $request->file('store_image')->store('images', 'public');
-                $data['store_image'] = $imagePath;
+                $filename = str_replace(' ', '_', strtolower($request->store_name)) . '.' . $request->file('store_image')->getClientOriginalExtension();
+                $data['store_image'] = $request->file('store_image')->storeAs('images', $filename, 'public');
             }
 
             $data['user_id'] = Auth::id();

@@ -64,7 +64,7 @@
                             <div class="flex items-center justify-center w-full">
                                 <label for="store_image"
                                     class="flex flex-col items-center justify-center w-full h-48 border-2 border-dashed border-[#BF8e43] rounded-xl cursor-pointer bg-white hover:bg-gray-100 ">
-                                    <!-- Upload Icon -->
+                                    
                                     <div
                                         class="flex flex-col items-center justify-center pt-5 pb-6 text-center transition-transform duration-300 group-hover:scale-105">
                                         <svg class="w-10 h-10 mb-3 text-[#BF8e43]" aria-hidden="true"
@@ -79,10 +79,10 @@
                                         </p>
                                         <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG (MAX. 5MB)</p>
                                     </div>
-                                    <input id="store_image" name="store_image" type="file" class="hidden"
+                                    <input id="store_image" name="store_image" type="file" class="hidden" required=""
                                         accept="image/*">
 
-                                    <!-- Animated Border Effect -->
+                                    
                                     <div
                                         class="absolute inset-0 border-4 border-transparent group-hover:border-[#BF8e43]/30 rounded-xl transition-all duration-500 pointer-events-none">
                                     </div>
@@ -161,7 +161,7 @@
                     <div>
                         <button type="submit"
                             class="items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">
-                            Add product
+                            Update Store
                         </button>
                     </div>
             </form>
