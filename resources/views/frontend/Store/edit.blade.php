@@ -57,9 +57,7 @@
 
                                 </div>
                             </div>
-                        @endif
-
-                        <!-- Fancy Upload Area -->
+                        @endif                       
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-900 dark:text-white mb-2">Upload New
                                 Image</label>
@@ -91,8 +89,6 @@
                                 </label>
                             </div>
                         </div>
-
-                        <!-- Preview Section -->
                         <div id="previewContainer" class="hidden mt-6 transition-all duration-300">
                             <p class="text-sm font-medium text-gray-900 dark:text-white mb-2">Preview:</p>
                             <div class="relative group">
