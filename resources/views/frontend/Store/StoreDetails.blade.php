@@ -41,6 +41,9 @@
                         to Favorites</a>
 
                 </div>
+                @if (Auth::check() && Auth::user()->role === 'admin')
+                    <h1>Views: {{ $store->view_count }}</h1>
+                @endif
                 <hr>
                 <p>Recent Items</p>
 
