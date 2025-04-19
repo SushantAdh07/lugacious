@@ -1,5 +1,6 @@
 @extends('frontend.home')
 @section('hero')
+<div class="min-h-screen bg-[#FAF7F6] flex flex-col items-center px-4 py-8 sm:px-6 sm:py-10">
 <div class="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4 md:px-6 lg:px-8 xl:px-24">
     @foreach ($results as $store)
         <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition-shadow">
@@ -31,5 +32,6 @@
             </div>
         </div>
     @endforeach
+</div>
 </div>
 @endsection

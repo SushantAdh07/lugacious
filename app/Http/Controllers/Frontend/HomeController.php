@@ -8,15 +8,19 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
-        $stores = Store::orderBy('store_name', 'asc')->get();   
-        return view('frontend.Body.hero', compact('stores'));      
+    public function index()
+    {
+        $stores = Store::orderBy('store_name', 'asc')->get();
+        return view('frontend.Body.hero', compact('stores'));
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $search = $request->input('search');
-        $results = Store::where('store_name', 'like', '%$search%')->get();
 
-        return view('frontend.store.search', compact('results'));
+        $results = Store::where('store_name', 'like', "%{$search}%")
+            ->get();
+
+        return view('frontend.store.search', compact('results', 'search'));
     }
 }
