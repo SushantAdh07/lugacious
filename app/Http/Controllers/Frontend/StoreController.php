@@ -44,6 +44,8 @@ class StoreController extends Controller
             'https://www.instagram.com/lamad_closet/',
             'https://www.instagram.com/instylenepalofficial/',
             'https://www.instagram.com/newstyle_fashionwear_official/',
+            'https://www.instagram.com/solosnepal/',
+            'https://www.instagram.com/christ_fashion_official/',
 
         ];
         return view('frontend.store.feed', compact('links'));
@@ -59,6 +61,13 @@ class StoreController extends Controller
         if(!$store){
             return view('errors.404');
         }
+
+        $views = 'shop' . $store->id;
+        if(!Session::has($views)){
+            $store->increment('view_count');
+            Session::put($views, 1);
+        }
+
         return view('frontend.store.storedetails', compact('store'));
     }
 

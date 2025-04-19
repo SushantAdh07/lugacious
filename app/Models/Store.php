@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Store extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'store_name',
+        'store_description',
+        'store_category',
+        'store_image',
+        'store_insta' 
+    ];
 
     public function users(){
         return $this->belongsTo(User::class);
