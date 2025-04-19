@@ -68,6 +68,11 @@
                                 class="font-medium text-[#BF8e43] hover:underline">Sign up</a>
                         </p>
                     </form>
+                    @if ($errors->has('email'))
+                        <div class="text-red-500 font-medium mt-2">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
