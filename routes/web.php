@@ -27,6 +27,7 @@ Route::get('/users-choice', function(){
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home');
+    Route::get('/search-store', 'search')->name('search.store');
 });
 
 Route::controller(StoreController::class)->group(function(){
