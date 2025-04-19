@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $stores = Store::latest()->get();
-        
-       
+        $stores = Store::orderBy('store_name', 'asc')->get();
         
         return view('frontend.Body.hero', compact('stores'));
        
