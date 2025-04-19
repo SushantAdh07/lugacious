@@ -21,6 +21,8 @@ class HomeController extends Controller
         $results = Store::where('store_name', 'like', "%{$search}%")
             ->get();
 
+        
+
         return view('frontend.store.search', compact('results', 'search'));
     }
 }

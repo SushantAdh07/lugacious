@@ -2,6 +2,27 @@
 @section('hero')
 <div class="min-h-screen bg-[#FAF7F6] flex flex-col items-center px-4 py-8 sm:px-6 sm:py-10">
 <div class="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4 md:px-6 lg:px-8 xl:px-24">
+    <div class="w-full max-w-md ml-auto py-6 px-24">
+            
+        <div class="relative flex items-center">
+            <form action="{{ route('search.store') }}" method="GET" class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </div>
+                
+                <input 
+                  type="text" 
+                  name="search"
+                  placeholder="Search..." 
+                  class="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-200"
+                >                 
+                <button type="submit" class="hidden">Search</button>
+              </form>    
+        </div>
+      </div>
+</div>
     @foreach ($results as $store)
         <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition-shadow">
             <a href="{{ route('store-details', $store->id) }}" class="block">
