@@ -1,4 +1,5 @@
 @extends('frontend.home')
+@section('title', 'Lugacious- '. $store->store_name)
 @section('hero')
     <div class="w-full max-w-6xl mx-auto">
         <div class="w-full flex justify-center pt-8 pb-4 relative">
@@ -64,35 +65,28 @@
                         </div>
                     </div>
                 </div>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const container = document.querySelector('.instagram-embed-container');
-                        const placeholder = container.previousElementSibling;
-
-                        const script = document.createElement('script');
-                        script.src = '//www.instagram.com/embed.js';
-                        script.async = true;
-
-                        script.onload = function() {
-                            placeholder.style.display = 'none';
-                            container.style.display = 'block';
-
-                            if (typeof instgrm !== 'undefined') {
-                                instgrm.Embeds.process();
-                            }
-                        };
-
-                        document.body.appendChild(script);
-                    });
-                </script>
-
-
             </div>
-
-
-
-
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.instagram-embed-container');
+            const placeholder = container.previousElementSibling;
+
+            const script = document.createElement('script');
+            script.src = '//www.instagram.com/embed.js';
+            script.async = true;
+
+            script.onload = function() {
+                placeholder.style.display = 'none';
+                container.style.display = 'block';
+
+                if (typeof instgrm !== 'undefined') {
+                    instgrm.Embeds.process();
+                }
+            };
+
+            document.body.appendChild(script);
+        });
+    </script>
 @endsection
