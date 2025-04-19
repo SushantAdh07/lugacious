@@ -6,7 +6,7 @@
 @section('hero')
     <div class="min-h-screen bg-[#FAF7F6] flex flex-col items-center px-4 py-8 sm:px-6 sm:py-10">
 
-        <h2 class="text-lg sm:text-xl md:text-2xl font-sans font-bold text-[#5E5B59] mb-4 sm:mb-6">
+        <h2 class="text-lg sm:text-xl md:text-2xl font-sans font-bold text-[#BF8e43] mb-4 sm:mb-6">
             Instagram Fashion Stores
         </h2>
 

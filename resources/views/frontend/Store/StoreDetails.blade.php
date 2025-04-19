@@ -46,47 +46,45 @@
                     <h1>Views: {{ $store->view_count }}</h1>
                 @endif
                 <hr>
-                <p>Recent Items</p>
 
-
-                <div class="relative bg-gray-200 rounded-lg animate-pulse"
-                    style="width: 80%; max-width: 800px; height: 600px; margin: 0 auto;">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                        </svg>
+                <div class="relative w-full max-w-[800px] mx-auto">
+                    <div id="insta-placeholder" class="bg-gray-200 aspect-square flex items-center justify-center min-h-[300px]">
+                      <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
                     </div>
-
-                    <div class="instagram-embed-container"
-                        style="width: 100%; height: 100%; overflow: hidden; display: none;">
-                        <div style="width: 100%; height: 100%; overflow-y: auto;">
-                            <blockquote class="instagram-media" data-instgrm-permalink="{{ $store->store_insta }}"
-                                data-instgrm-version="14" style="width: 100%; min-height: 100%; border: none;"></blockquote>
-                        </div>
+                  
+                    <div id="insta-embed" class="opacity-0 aspect-square w-full transition-opacity duration-100">
+                      <blockquote class="instagram-media" 
+                                data-instgrm-permalink="{{ $store->store_insta }}"
+                                data-instgrm-version="14"
+                                style="width:100%; min-height:100%; border:none;"></blockquote>
                     </div>
-                </div>
+                  </div>
+                  
+                  <script>
+                  document.addEventListener('DOMContentLoaded', () => {
+                    const placeholder = document.getElementById('insta-placeholder');
+                    const embed = document.getElementById('insta-embed');
+                    
+                    const script = document.createElement('script');
+                    script.src = '//www.instagram.com/embed.js';
+                    script.async = true;
+                    
+                    script.onload = () => {
+                      placeholder.remove(); 
+                      embed.classList.remove('opacity-0');
+                      
+                      if (window.instgrm) {
+                        instgrm.Embeds.process(); 
+                      }
+                    };
+                    
+                    document.body.appendChild(script);
+                  });
+                  </script>
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.querySelector('.instagram-embed-container');
-            const placeholder = container.previousElementSibling;
-
-            const script = document.createElement('script');
-            script.src = '//www.instagram.com/embed.js';
-            script.async = true;
-
-            script.onload = function() {
-                placeholder.style.display = 'none';
-                container.style.display = 'block';
-
-                if (typeof instgrm !== 'undefined') {
-                    instgrm.Embeds.process();
-                }
-            };
-
-            document.body.appendChild(script);
-        });
-    </script>
+    
 @endsection
