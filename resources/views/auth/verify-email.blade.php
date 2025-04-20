@@ -20,24 +20,25 @@
             <div
                 class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <div class="flex">
+                    <div class="">
                         <form class="space-y-4 md:space-y-6" action="{{ route('verification.send') }}" method="POST">
                             @csrf
-                            <h1>We've sent a verification email to your email. Please verify your email to be Lugacious!
-                            </h1>
-                            <button type="submit"
-                                class="w-full px-5 py-2.5 text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">Resend
-                                Verification Email</button>
+                            <h1 class="mb-4">We've sent a verification email to your email. Please verify your email to be Lugacious!</h1>
+                            <!-- Flex container for buttons -->
+                            <div class="flex gap-4">
+                                <button type="submit"
+                                    class="flex-1 px-5 py-2.5 text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">
+                                    Resend 
+                                </button>
+                                <a href="{{ route('home') }}"
+                                    class="flex-1 px-5 py-2.5 text-center text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">
+                                    Skip for Now
+                                </a>
+                            </div>
                         </form>
-
-                        <a href="{{ route('home') }}"
-                            class=" w-full px-5 py-2.5 text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">Skip
-                            for Now</a>
-
                     </div>
                     @if ($errors->any())
-                        <div
-                            class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
+                        <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
