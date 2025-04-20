@@ -32,7 +32,7 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{store}', 'storeDetails')->name('store-details');
-    Route::get('/create-store', 'newStore')->name('new-store')->middleware('auth');
+    Route::get('/create-store', 'newStore')->name('new-store')->middleware(App\Http\Middleware\AuthMiddleware::class);
     Route::post('/store/create', 'createStore')->name('create-store');
     Route::get('/store/edit/{store}', 'edit')->name('edit-store');
     Route::put('/store/update/{store}', 'update')->name('update-store');
