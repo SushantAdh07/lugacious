@@ -36,9 +36,9 @@ class UsersChoiceController extends Controller
     public function store(Request $request)
     {
 
-        if(!Auth::check()){
+        /*if(!Auth::check()){
             return redirect()->route('login')->with('error', 'Please Log in first!');
-        }
+        } */
 
         $request->validate([
             'users_choice' => ['required', 'min:5'],

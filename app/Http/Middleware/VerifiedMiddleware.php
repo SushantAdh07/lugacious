@@ -2,13 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AuthMiddleware
+class VerifiedMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,8 +16,8 @@ class AuthMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::check()){
-            return redirect()->route('login')->with('error', 'Hey there, please log in first!');
+        if(!Auth::check() || !Auth::user()->hasVerifiedEmail()){
+            return redirect()->route('verification.notice')->with('warning', 'You need to verify your email first!');
         }
         return $next($request);
     }

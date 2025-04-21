@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\ForUsers\UsersChoiceController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\StoreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,7 @@ Route::middleware('auth')->group(function () {
 //ForUsers
 Route::controller(UsersChoiceController::class)->prefix('users-choice')->group(function(){
     Route::get('/', 'index')->name('users.choice');
-    Route::post('/add', 'store')->name('add.choice');
+    Route::post('/add', 'store')->name('add.choice')->middleware(AuthMiddleware::class, 'verified.email');
     Route::get('/delete/{delete}', 'destroy')->name('delete.choice');
 });
 
