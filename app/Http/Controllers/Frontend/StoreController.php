@@ -93,6 +93,7 @@ class StoreController extends Controller
 
     public function toggleFavorite(Store $store)
     {
+        
         $user = Auth::user();
 
         if ($user->favoriteStores()->where('store_id', $store->id)->exists()) {

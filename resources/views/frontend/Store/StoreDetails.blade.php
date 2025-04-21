@@ -37,12 +37,17 @@
                         <a
                             class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Delete</a>
                     @endif
+                    
+                    @auth
                     <form method="POST" action="{{ route('stores.toggleFavorite', $store->id) }}">
                         @csrf
                         <button class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border" type="submit">
                             {{ auth()->user()->favoriteStores->contains($store->id) ? 'Unfavorite' : 'Add to Favorites' }}
                         </button>
                     </form>
+                    @else
+                    <a href="{{route('login')}}" class="bg-[#BF8e43] font-bold rounded-lg text-white px-6 py-3 text-sm hover:bg-white hover:text-[#BF8e43] hover:border-[#1915014a] border">Add to Favorites</a>
+                    @endauth
 
                 </div>
                 @if (Auth::check() && Auth::user()->role === 'admin')
