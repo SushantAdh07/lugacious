@@ -30,6 +30,8 @@ Route::controller(UsersChoiceController::class)->prefix('users-choice')->group(f
     Route::get('/delete/{delete}', 'destroy')->name('delete.choice');
 });
 
+Route::post('/stores/{store}/favorite', [StoreController::class, 'toggleFavorite'])->name('stores.toggleFavorite');
+
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home');

@@ -19,7 +19,8 @@ class StoreController extends Controller
         $this->storeRepository = $storeRepository;
     }
 
-    public function feed(){
+    public function feed()
+    {
         $links = [
             'https://www.instagram.com/trendy_corner02',
             'https://www.instagram.com/dreamclosetnp',
@@ -52,19 +53,21 @@ class StoreController extends Controller
         return view('frontend.store.feed', compact('links'));
     }
 
-    public function newStore(){
+    public function newStore()
+    {
         return view('frontend.store.createstore');
     }
-    
-    public function storeDetails($id){
+
+    public function storeDetails($id)
+    {
         $store = $this->storeRepository->find($id);
 
-        if(!$store){
+        if (!$store) {
             return view('errors.404');
         }
 
         $views = 'shop' . $store->id;
-        if(!Session::has($views)){
+        if (!Session::has($views)) {
             $store->increment('view_count');
             Session::put($views, 1);
         }
@@ -74,49 +77,64 @@ class StoreController extends Controller
 
     public function createStore(StoreRequest $request)
     {
-            $data = $request->validated();
+        $data = $request->validated();
 
-            if ($request->hasFile('store_image')){
-                $filename = str_replace(' ', '_', strtolower($request->store_name)) . '.' . $request->file('store_image')->getClientOriginalExtension();
-                $data['store_image'] = $request->file('store_image')->storeAs('images', $filename, 'public');
-            }
+        if ($request->hasFile('store_image')) {
+            $filename = str_replace(' ', '_', strtolower($request->store_name)) . '.' . $request->file('store_image')->getClientOriginalExtension();
+            $data['store_image'] = $request->file('store_image')->storeAs('images', $filename, 'public');
+        }
 
-            $data['user_id'] = Auth::id();
+        $data['user_id'] = Auth::id();
 
-            $this->storeRepository->create($data);
-            
-            return redirect()->route('home');
+        $this->storeRepository->create($data);
+
+        return redirect()->route('home');
     }
 
-    public function edit($id){
+    public function toggleFavorite(Store $store)
+    {
+        $user = Auth::user();
+
+        if ($user->favoriteStores()->where('store_id', $store->id)->exists()) {
+            $user->favoriteStores()->detach($store->id);
+        } else {
+            $user->favoriteStores()->attach($store->id);
+        }
+
+        return back();
+    }
+
+    public function edit($id)
+    {
         $store = $this->storeRepository->find($id);
         return view('frontend.store.edit', compact('store'));
     }
 
-    public function update(StoreRequest $request, Store $store){
+    public function update(StoreRequest $request, Store $store)
+    {
 
-        if(!auth()->check()){
+        if (!auth()->check()) {
             return redirect()->route('login')->with('error', 'Please login to edit the store.');
         }
-        
+
         $data = $request->validated();
 
-            if ($request->hasFile('store_image')){
-                $imagePath = $request->file('store_image')->store('images', 'public');
-                $data['store_image'] = $imagePath;
-            }
+        if ($request->hasFile('store_image')) {
+            $imagePath = $request->file('store_image')->store('images', 'public');
+            $data['store_image'] = $imagePath;
+        }
 
-            
-            $data['user_id'] = Auth::id();
 
-            $this->storeRepository->update($store->id, $data);
-            
-            return redirect()->route('home');
+        $data['user_id'] = Auth::id();
+
+        $this->storeRepository->update($store->id, $data);
+
+        return redirect()->route('home');
     }
 
-    public function deleteStore($id){
+    public function deleteStore($id)
+    {
         $this->storeRepository->delete($id);
         return redirect()->route('home');
     }
-  
 }
