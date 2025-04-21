@@ -6,6 +6,7 @@ use App\Models\UsersChoice;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersChoiceController extends Controller
 {
@@ -34,7 +35,7 @@ class UsersChoiceController extends Controller
             'users_choice' => ['required', 'min:5'],
         ]);
 
-        UsersChoice::create([
+        Auth::user()->usersChoice()->create([
             'users_choice' =>$request->users_choice,
         ]);
 
