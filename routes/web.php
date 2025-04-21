@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ForUsers\UsersChoiceController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\StoreController;
 use App\Http\Controllers\ProfileController;
@@ -19,10 +20,13 @@ Route::middleware('auth')->group(function () {
 
 //Frontend
 
-//Test
-Route::get('/users-choice', function(){
-    return view('frontend.store.usersChoice');
-})->name('users.choice');
+
+//ForUsers
+Route::controller(UsersChoiceController::class)->prefix('users-choice')->group(function(){
+    Route::get('/', 'index')->name('users.choice');
+    Route::post('/add', 'store')->name('add.choice');
+    Route::get('/delete', 'delete')->name('delete.choice');
+});
 
 
 Route::controller(HomeController::class)->group(function(){
