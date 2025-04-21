@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\ForUsers\UsersChoiceController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\StoreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,7 +26,7 @@ Route::middleware('auth')->group(function () {
 Route::controller(UsersChoiceController::class)->prefix('users-choice')->group(function(){
     Route::get('/', 'index')->name('users.choice');
     Route::post('/add', 'store')->name('add.choice');
-    Route::get('/delete', 'delete')->name('delete.choice');
+    Route::get('/delete/{delete}', 'destroy')->name('delete.choice');
 });
 
 
@@ -36,11 +37,11 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::controller(StoreController::class)->group(function(){
     Route::get('/store/{store}', 'storeDetails')->name('store-details');
-    Route::get('/create-store', 'newStore')->name('new-store')->middleware(App\Http\Middleware\AuthMiddleware::class);
-    Route::post('/store/create', 'createStore')->name('create-store');
-    Route::get('/store/edit/{store}', 'edit')->name('edit-store');
-    Route::put('/store/update/{store}', 'update')->name('update-store');
-    Route::get('/delete/{store}', 'deleteStore')->name('delete-store');
+    Route::get('/create-store', 'newStore')->name('new-store')->middleware(RoleMiddleware::class);
+    Route::post('/store/create', 'createStore')->name('create-store')->middleware(RoleMiddleware::class);
+    Route::get('/store/edit/{store}', 'edit')->name('edit-store')->middleware(RoleMiddleware::class);
+    Route::put('/store/update/{store}', 'update')->name('update-store')->middleware(RoleMiddleware::class);
+    Route::get('/delete/{store}', 'deleteStore')->name('delete-store')->middleware(RoleMiddleware::class);
     //test
     Route::get('/feed', 'feed');
 });

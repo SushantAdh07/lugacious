@@ -20,7 +20,35 @@
                     Add
                 </button>
             </form>
+            @auth
+            <div class="relative mt-3">
+                <ul
+                    class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                    @foreach ($usersChoice as $item)
+                        <li
+                            class="w-full px-4 py-3 border-b border-gray-200 dark:border-gray-600 flex justify-between items-center group hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <span class="truncate pr-2">{{ $item->users_choice }}</span>
+
+                            <form action="{{ route('delete.choice', $item->id) }}" method="GET" class="flex-shrink-0">
+                                @csrf
+                                <input type="hidden" name="choice_id" value="{{ $item->id }}">
+                                <button type="submit"
+                                    class="text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors focus:outline-none"
+                                    aria-label="Delete">
+                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                        fill="none" viewBox="0 0 18 18">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" d="m1 1 16 16M1 17 17 1" />
+                                    </svg>
+                                </button>
+                            </form>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endauth
         </div>
+
 
         @if (session('success'))
             <div id="toast-success"
@@ -35,7 +63,7 @@
                     </svg>
                     <span class="sr-only">Check icon</span>
                 </div>
-                <div class="ms-3 text-sm font-normal">{{session('success')}}</div>
+                <div class="ms-3 text-sm font-normal">{{ session('success') }}</div>
                 <button onclick="dismissToast()" type="button"
                     class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
                     data-dismiss-target="#toast-success" aria-label="Close">
@@ -48,14 +76,15 @@
                 </button>
             </div>
             <script>
-                function dismissToast(){
+                function dismissToast() {
                     const toast = document.getElementById('toast-success');
                     toast.remove();
-                }      
+                }
             </script>
         @endif
         @if ($errors->any())
-            <div class="flex items-center w-full mx-auto max-w-xs p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
+            <div
+                class="flex items-center w-full mx-auto max-w-xs p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>

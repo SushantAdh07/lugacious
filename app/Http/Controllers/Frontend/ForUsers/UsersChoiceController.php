@@ -15,7 +15,11 @@ class UsersChoiceController extends Controller
      */
     public function index()
     {
-        return view('frontend.ForUsers.usersChoice');
+        $usersChoice = [];
+        if(Auth::check()){
+            $usersChoice = Auth::user()->usersChoice()->latest()->get();
+        }
+        return view('frontend.ForUsers.usersChoice', compact('usersChoice'));
     }
 
     /**
@@ -31,6 +35,11 @@ class UsersChoiceController extends Controller
      */
     public function store(Request $request)
     {
+
+        if(!Auth::check()){
+            return redirect()->route('login')->with('error', 'Please Log in first!');
+        }
+
         $request->validate([
             'users_choice' => ['required', 'min:5'],
         ]);
@@ -70,8 +79,10 @@ class UsersChoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(UsersChoice $usersChoice)
+    public function destroy(UsersChoice $usersChoice, $id)
     {
-        //
+        UsersChoice::findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'Store Deleted');
+
     }
 }
