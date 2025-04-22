@@ -24,12 +24,20 @@ Route::middleware('auth')->group(function () {
 
 
 //ForUsers
+
+//UsersChoice
 Route::controller(UsersChoiceController::class)->prefix('users-choice')->group(function(){
     Route::get('/', 'index')->name('users.choice');
     Route::post('/add', 'store')->name('add.choice')->middleware(AuthMiddleware::class, 'verified.email');
     Route::get('/delete/{delete}', 'destroy')->name('delete.choice');
 });
 
+//Feedbacks
+Route::get('/feedback', function(){
+    return view('frontend.ForUsers.feedback');
+})->name('feedback');
+
+//Favorites
 Route::post('/stores/{store}/favorite', [StoreController::class, 'toggleFavorite'])->name('stores.toggleFavorite');
 
 
