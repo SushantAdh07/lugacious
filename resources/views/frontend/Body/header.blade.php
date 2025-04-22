@@ -39,12 +39,20 @@
                                 Add More
                             </a>
                         </li>
+
                         @auth
-                            <li>
-                                <a href="#"
+                            <li class="relative">
+                                <div class="relative inline-block">
+                                    <button onclick="this.nextElementSibling.classList.toggle('hidden')" tabindex="0"
                                     class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-colors duration-200">
                                     {{ Auth::user()->name }}
-                                </a>
+                                </button>
+                                <div class="hidden absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50">
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                                    <a href="{{route('logout')}}" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+                                </div>
+                                </div>
+                                
                             </li>
                         @else
                             <li>

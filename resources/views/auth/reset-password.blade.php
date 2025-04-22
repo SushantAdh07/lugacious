@@ -31,9 +31,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
+            <button type="submit" class="font-sans flex-1 px-5 py-2.5 text-center text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border">Reset Password</button>    
         </div>
     </form>
 </x-guest-layout>
