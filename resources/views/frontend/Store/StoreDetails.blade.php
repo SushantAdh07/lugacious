@@ -1,5 +1,5 @@
 @extends('frontend.home')
-@section('title', 'Lugacious- '. $store->store_name)
+@section('title', $store->store_name . ' - Lugacious')
 @section('hero')
     <div class="w-full max-w-6xl mx-auto">
         <div class="w-full flex justify-center pt-8 pb-4 relative">
