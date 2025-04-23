@@ -40,6 +40,11 @@ Route::get('/feedback', function(){
 //Favorites
 Route::post('/stores/{store}/favorite', [StoreController::class, 'toggleFavorite'])->name('stores.toggleFavorite');
 
+//UsersProfile
+Route::get('/your-profile', function(){
+    return view('frontend.ForUsers.profile');
+})->name('users.profile');
+
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'index')->name('home');
