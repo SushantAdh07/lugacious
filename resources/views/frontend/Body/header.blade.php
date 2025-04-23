@@ -36,7 +36,7 @@
                         <li>
                             <a href="{{ route('users.choice') }}"
                                 class="block py-2 px-3 text-gray-900 rounded-sm hover:text-[#BF8e43] md:hover:bg-transparent md:border-0 md:hover:text-[#BF8e43] md:p-0 dark:text-white md:dark:hover:text-[#BF8e43] dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-colors duration-200 {{ request()->routeIs('users.choice') ? 'md:text-[#BF8e43] md:dark:text-blue-500' : '' }}">
-                                Add More
+                                Add Yours
                             </a>
                         </li>
 
