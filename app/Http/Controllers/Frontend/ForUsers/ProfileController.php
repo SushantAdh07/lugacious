@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index(){
-        return view('frontend.ForUsers.profile');
+        $favorites = auth()->user()->load('favoriteStores');
+        return view('frontend.ForUsers.profile', compact('favorites'));
     }
 }
