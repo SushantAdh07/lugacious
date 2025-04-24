@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ForUsers\ProfileController as ForUsersProfileController;
 use App\Http\Controllers\Frontend\ForUsers\UsersChoiceController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\StoreController;
@@ -41,9 +42,7 @@ Route::get('/feedback', function(){
 Route::post('/stores/{store}/favorite', [StoreController::class, 'toggleFavorite'])->name('stores.toggleFavorite');
 
 //UsersProfile
-Route::get('/your-profile', function(){
-    return view('frontend.ForUsers.profile');
-})->name('users.profile');
+Route::get('/your-profile', [ForUsersProfileController::class, 'index'])->name('users.profile');
 
 
 Route::controller(HomeController::class)->group(function(){

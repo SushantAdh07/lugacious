@@ -48,7 +48,7 @@
                                     {{ Auth::user()->name }}
                                 </button>
                                 <div class="hidden absolute mt-2 w-48 bg-white shadow-lg rounded-md z-50">
-                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                                    <a href="{{route('users.profile')}}" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
                                     <a href="{{route('logout')}}" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
                                 </div>
                                 </div>
