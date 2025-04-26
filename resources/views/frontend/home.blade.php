@@ -10,13 +10,13 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="font-sans min-h-screen flex flex-col bg-white">
+<body class="">
     {{ View::make('frontend.Body.header') }}
 
-    <main class="flex-grow relative"> <!-- Added relative here -->
+    
         @yield('hero')
         @yield('error')
-    </main>
+    
 
     {{ View::make('frontend.Body.footer') }}
 </body>
