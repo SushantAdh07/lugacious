@@ -1,55 +1,98 @@
+@php
+    use Illuminate\Support\Str;
+@endphp
+
 @extends('frontend.home')
 @section('hero')
-    <div class="min-h-screen bg-[#FAF7F6] flex flex-col items-center px-4 py-8 sm:px-6 sm:py-10">
-        <div class="w-full max-w-md ml-auto py-6 px-24">
+<div class="min-h-screen bg-[#BF8e43] relative overflow-hidden">
+    
 
-            <div class="relative flex items-center">
-                <form action="{{ route('search.store') }}" method="GET" class="relative">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </div>
-                    <input type="text" name="search" placeholder="Search..."
-                        class="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none transition-all duration-200">
-                    <button type="submit" class="hidden">Search</button>
-                </form>
+    <!-- Content Container -->
+    <div class="relative z-10 container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        <!-- Glass Header Panel -->
+        <div class="bg-white/20 border border-white/10 rounded-3xl shadow-glass p-8 mb-16">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-[#f8d7a3]">Instagram Fashion</span>
+                </h1>
+                <p class="text-white max-w-2xl mx-auto">Discover the world's most exclusive fashion boutiques and emerging designers</p>
+                <div class="relative inline-block mt-8 w-full max-w-2xl backdrop-blur-sm bg-white/5 rounded-full border border-white/10">
+                    <form action="{{ route('search.store') }}" method="GET" class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-white">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <input 
+                            type="text" 
+                            name="search"
+                            placeholder="Search stores..." 
+                            class="w-full py-4 pl-14 pr-16 bg-transparent text-white placeholder-white/70 border border-none focus:ring-1 focus:ring-[#BF8e43] focus:border-[#BF8e43] focus:outline-none transition-all duration-300"
+                        >
+                        <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-[#BF8e43] text-white rounded-full p-2 hover:bg-[#d9a95b] transition-colors shadow-gold">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div
-            class="w-full grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 sm:px-4 md:px-6 lg:px-8 xl:px-24">
+
+        <div class="">
+            <h1 class="relative p-4 text-lg text-white font-md">Search Results:</h1>
+        </div>
+
+        <!-- Glass Store Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             @foreach ($results as $store)
-                <div
-                    class="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 hover:shadow-md transition-shadow">
-                    <a href="{{ route('store-details', $store->id) }}" class="block">
-                        <div class="p-4 sm:p-5 flex justify-center">
-                            <img class="object-contain w-full h-40 sm:h-48 max-w-[200px] mx-auto"
-                                src="{{ asset('storage/' . $store->store_image) }}" alt="{{ $store->store_name }}" />
+            <div class="group relative backdrop-blur-md bg-white/20 border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-white/10 hover:border-[#BF8e43]/30 hover:shadow-glass-lg">
+                <!-- Store Image with Glass Overlay -->
+                <div class="relative h-72 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50 z-10"></div>
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                         src="{{ asset('storage/' . $store->store_image) }}" 
+                         alt="{{ $store->store_name }}">
+                    <!-- Glass Info Panel -->
+                    <div class="absolute bottom-0 left-0 right-0 p-6 backdrop-blur-sm z-20">
+                        <h3 class="text-xl font-bold text-white group-hover:text-[#BF8e43] transition-colors">
+                            {{ $store->store_name }}
+                        </h3>
+                        <div class="flex items-center mt-2">
+                            <div class="flex text-[#BF8e43]">
+                                ★ ★ ★ ★ ★
+                            </div>
+                            <span class="text-sm text-white/80 ml-2"></span>
                         </div>
-                    </a>
-                    <div class="p-4 sm:p-5">
-                        <a href="{{ route('store-details', $store->id) }}">
-                            <h5
-                                class="mb-2 text-xl sm:text-2xl font-sans font-bold tracking-tight text-gray-900 dark:text-white hover:text-[#BF8e43] transition-colors">
-                                {{ $store->store_name }}
-                            </h5>
-                        </a>
-                        <p class="mb-3 font-sans text-sm sm:text-base text-gray-700 dark:text-gray-400">
-                            {{ Str::limit($store->store_description, 75, '...') }}
-                        </p>
+                    </div>
+                    <!-- Favorite Button 
+                    <div class="absolute top-5 right-5 z-20">
+                        <button class="p-2.5 backdrop-blur-sm bg-black/50 rounded-full text-white hover:text-[#BF8e43] transition-colors border border-white/10 hover:border-[#BF8e43] shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </button>
+                    </div> -->
+                </div>
+
+                <!-- Store Details -->
+                <div class="p-4">
+                    <p class="text-gray-200 mb-5 line-clamp-2 min-h-[3rem] text-md">
+                        {{ Str::limit($store->store_description, 75, '...') }}
+                    </p>
+                    
                         <a href="{{ route('store-details', $store->id) }}"
-                            class="inline-flex items-center px-3 py-2 text-xs sm:text-sm font-medium font-sans text-center text-white bg-[#BF8e43] rounded-lg hover:bg-white hover:text-[#BF8e43] hover:border-[#BF8e43] border transition-colors duration-200">
-                            Read more
-                            <svg class="rtl:rotate-180 w-3 h-3 sm:w-3.5 sm:h-3.5 ms-2" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+                           class="inline-flex items-center px-5 py-2 bg-white text-[#BF8e43] rounded-lg hover:bg-transparent hover:text-white border hover:border-white transition-colors font-medium group shadow-gold">
+                            View Store
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                             </svg>
                         </a>
-                    </div>
                 </div>
+            </div>
             @endforeach
         </div>
     </div>
+</div>
+
 @endsection
