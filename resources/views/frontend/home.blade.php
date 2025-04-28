@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="">
+<body class="flex flex-col min-h-screen">
     {{ View::make('frontend.Body.header') }}
 
     
