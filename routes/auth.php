@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
@@ -56,4 +57,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+});
+
+//google
+Route::controller(GoogleController::class)->group(function(){
+    Route::get('auth/google', 'googleLogin')->name('auth.google');
+    Route::get('auth/google-callback', 'googleAuth')->name('auth.google-callback');
 });

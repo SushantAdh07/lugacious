@@ -25,6 +25,28 @@ export default {
                     "950": "#172554"
                 }
             },
+
+            extend: {
+                backdropBlur: {
+                    '3xl': '124px',
+                },
+                boxShadow: {
+                    'glass': '0 8px 32px 0 rgba(191, 142, 67, 0.18)',
+                    'glass-lg': '0 12px 40px 0 rgba(191, 142, 67, 0.25)',
+                    'gold': '0 4px 20px -2px rgba(191, 142, 67, 0.4)',
+                    'gold-lg': '0 8px 30px -3px rgba(191, 142, 67, 0.5)'
+                },
+                animation: {
+                    'float': 'float 8s ease-in-out infinite',
+                    'float-slow': 'float 10s ease-in-out infinite 1s'
+                },
+                keyframes: {
+                    float: {
+                        '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                        '50%': { transform: 'translateY(-20px) translateX(10px)' },
+                    }
+                }
+            },
             fontFamily: {
                 // Override default 'sans' with Poppins
                 sans: ['Poppins', ...defaultTheme.fontFamily.sans],
