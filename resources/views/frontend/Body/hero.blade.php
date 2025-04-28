@@ -50,7 +50,7 @@
                          src="{{ asset('storage/' . $store->store_image) }}" 
                          alt="{{ $store->store_name }}">
                     <!-- Glass Info Panel -->
-                    <div class="absolute bottom-0 left-0 right-0 p-6 backdrop-blur-sm z-20">
+                    <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
                         <h3 class="text-xl font-bold text-white group-hover:text-[#BF8e43] transition-colors">
                             {{ $store->store_name }}
                         </h3>
