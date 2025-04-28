@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function index(){
-        $user = Auth::user()->load('favoriteStores');
-        return view('frontend.ForUsers.profile', compact('user'));
+        if (Auth::check()){
+            $user = Auth::user()->load('favoriteStores');
+            return view('frontend.ForUsers.profile', compact('user'));
+        }
+        return redirect('/login')->with('error', 'Please login first');
+        
     }
 }

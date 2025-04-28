@@ -20,7 +20,8 @@ class GoogleController extends Controller
 
     public function googleAuth()
     {
-        $googleUser = Socialite::driver('google')->user();
+        try {
+            $googleUser = Socialite::driver('google')->user();
 
             
             $user = User::updateOrCreate(
@@ -35,5 +36,9 @@ class GoogleController extends Controller
 
             Auth::login($user);
             return redirect('/');
+        } catch (\Exception $e) {
+            \Log::error('Google Auth Error: '.$e->getMessage());
+            return redirect('/login')->with('error', 'Google login failed. Please try again.');
+        }
     }
 }

@@ -26,7 +26,7 @@
                             @if (Auth::user()->email_verified_at)
                                 <p class="m-4 text-[#BF8e43] text-sm">Verified User✅</p>
                             @else
-                                <a href="" class="m-4 text-[#BF8e43] text-sm">➡Be a Verified User</a>
+                                <a href="{{route('verification.notice')}}" class="m-4 text-[#BF8e43] text-sm">➡Be a Verified User</a>
                             @endif
                         </p>
                         <p class="text-[#BF8e43] font-medium">{{ $user->email }}</p>
