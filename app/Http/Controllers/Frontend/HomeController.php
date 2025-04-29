@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $stores = Store::orderBy('store_name', 'asc')->get();
+        $stores = Store::orderBy('store_name', 'asc')->paginate(20);
         return view('frontend.Body.hero', compact('stores'));
     }
 

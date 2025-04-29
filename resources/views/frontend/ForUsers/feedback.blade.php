@@ -1,6 +1,6 @@
 @extends('frontend.home')
 @section('hero')
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-[#FAF7F6] flex-grow dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
             <form action="{{route('add.feedback')}}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -22,9 +22,6 @@
             </form>
         </div>
 
-        @foreach ($feedbacks as $feedback)
-            <p>{{$feedback->feedback}}</p>
-        @endforeach
 
         @if (session('success'))
             <div id="toast-success"
