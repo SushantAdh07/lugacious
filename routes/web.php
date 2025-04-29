@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ForUsers\FeedbackController;
 use App\Http\Controllers\Frontend\ForUsers\ProfileController as ForUsersProfileController;
 use App\Http\Controllers\Frontend\ForUsers\UsersChoiceController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -34,9 +35,10 @@ Route::controller(UsersChoiceController::class)->prefix('users-choice')->group(f
 });
 
 //Feedbacks
-Route::get('/feedback', function(){
-    return view('frontend.ForUsers.feedback');
-})->name('feedback');
+Route::controller(FeedbackController::class)->group(function(){
+    Route::get('/feedback', 'create')->name('feedback');
+    Route::post('/feedback/add', 'store')->name('add.feedback')->middleware('custom.auth', 'verified');
+});
 
 //Favorites
 Route::post('/stores/{store}/favorite', [StoreController::class, 'toggleFavorite'])->name('stores.toggleFavorite');

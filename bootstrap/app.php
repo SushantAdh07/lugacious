@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AuthMiddleware;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Middleware\VerifiedMiddleware;
 use Illuminate\Foundation\Application;
@@ -16,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'verified.email' => VerifiedMiddleware::class,
+            'custom.auth' => AuthMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
