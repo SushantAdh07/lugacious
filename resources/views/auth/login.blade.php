@@ -15,7 +15,7 @@
     <section class="bg-gray-50 dark:bg-gray-900 font-sans">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
             <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                <img class="mr-2" src="{{ asset('images/logo.png') }}" alt="logo">
+                <img class="h-12 sm:h-16" src="{{ asset('images/logo.png') }}" alt="logo">
             </a>
             @if (session('error'))
                 <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
