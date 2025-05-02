@@ -3,23 +3,26 @@
 @section('hero')
 <div class="bg-[#FAF7F6] dark:bg-gray-900 min-h-screen py-8">
     <div class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Store Header Section -->
         <div class="w-full flex flex-col items-center pt-4 pb-6 relative">
-            <a href="{{ route('home') }}" class="absolute left-4 top-4 text-[#BF8e43] hover:text-amber-700 transition-colors duration-300">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
-            </a>
+            <a href="{{ url()->previous() }}" class="absolute left-4 top-4 flex items-center text-[#BF8E43] hover:text-amber-700 mb-6 transition-colors duration-300">
+            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+            Back
+        </a>
             
             <div class="w-32 h-32 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-white shadow-lg shadow-[#E3E1E0]/50 dark:shadow-gray-800/50">
                 <img src="{{ asset('storage/' . $store->store_image) }}" alt="{{ $store->store_name }}" class="w-full h-full object-cover">
             </div>
             
             <h1 class="mt-4 text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white text-center">{{ $store->store_name }}</h1>
-            <p class="mt-2 text-sm sm:text-base text-[#BF8e43] font-medium">{{ $store->store_category }}</p>
+            <p class="mt-2 text-sm sm:text-base text-[#BF8e43] font-medium">{{ match($store->store_category) {
+                'Unisex' => 'Men and Women', 
+                'Male' => 'Men',
+                default => $store->store_category
+            } }}</p>
         </div>
 
-        <!-- Store Content Section -->
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 sm:p-8 mb-8">
             <div class="space-y-4">
                 <h2 class="text-xl font-semibold text-gray-800 dark:text-white">About This Store</h2>
@@ -44,7 +47,6 @@
                 </div>
             </div>
 
-            <!-- Action Buttons -->
             <div class="mt-8 flex flex-wrap gap-4">
                 @if (Auth::check() && Auth::user()->role === 'admin')
                     <a href="{{ route('edit-store', $store->id) }}" class="px-6 py-3 bg-[#BF8e43] text-white font-medium rounded-lg hover:bg-amber-700 transition-colors duration-300 shadow-md">
@@ -82,7 +84,6 @@
             @endif
         </div>
 
-        <!-- Instagram Embed Section -->
         <div class="relative w-full bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
             <div id="insta-placeholder" class="w-full aspect-square bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
                 <div class="text-center p-6">

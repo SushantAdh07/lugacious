@@ -39,11 +39,13 @@
             </div>
         </div>
 
+        
+
+        <!-- Glass Store Cards Grid -->
+        @if ($results->count() > 0)
         <div class="">
             <h1 class="relative p-4 text-lg text-white font-md">Search Results:</h1>
         </div>
-
-        <!-- Glass Store Cards Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             @foreach ($results as $store)
             <div class="group relative backdrop-blur-md bg-white/20 border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-white/10 hover:border-[#BF8e43]/30 hover:shadow-glass-lg">
@@ -92,6 +94,11 @@
             </div>
             @endforeach
         </div>
+        @else
+        
+            <h1 class="relative p-4 text-lg text-white font-md">Oops! No stores found...</h1>
+        
+        @endif
     </div>
 </div>
 
