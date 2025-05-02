@@ -41,7 +41,7 @@ Route::controller(FeedbackController::class)->group(function(){
 });
 
 //Favorites
-Route::post('/stores/{store}/favorite', [StoreController::class, 'toggleFavorite'])->name('stores.toggleFavorite');
+Route::post('/stores/{store}/favorite', [StoreController::class, 'toggleFavorite'])->name('stores.toggleFavorite')->middleware('custom.auth');
 
 //UsersProfile
 Route::get('/your-profile', [ForUsersProfileController::class, 'index'])->name('users.profile');
@@ -65,7 +65,7 @@ Route::controller(StoreController::class)->group(function(){
 
 Route::controller(BlogController::class)->group(function(){
     Route::get('/blog', 'index')->name('blog');
-    Route::get('/blog/create', 'createBlog')->name('create-blog');
+    Route::get('/blog/create', 'createBlog')->name('create-blog')->middleware('admin');
 });
 
 //Backend
