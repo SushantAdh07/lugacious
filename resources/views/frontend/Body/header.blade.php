@@ -42,23 +42,38 @@
                         </li>
 
                         @auth
-                            <li class="relative group">
-                                <button type="button"
-                                    class="flex items-center py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#BF8e43] md:p-0 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-colors duration-200
-                                    {{ request()->routeIs('users.profile') ? 'md:text-[#BF8e43] font-semibold' : '' }}">
+                            <li class="relative group" x-data="{ open: false }">
+                                <button type="button" 
+                                        @click="open = !open"
+                                        @mouseenter="if(window.innerWidth >= 768) open = true"
+                                        class="flex items-center py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-[#BF8e43] md:p-0 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent transition-colors duration-200
+                                        {{ request()->routeIs('users.profile') ? 'md:text-[#BF8e43] font-semibold' : '' }}">
                                     <span>{{ explode(' ', Auth::user()->name)[0] }}</span>
-                                    <svg class="w-4 h-4 ml-1 transition-transform duration-200 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                                    <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                                     </svg>
                                 </button>
                                 
-                                <!-- Dropdown Menu -->
-                                <div class="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden group-hover:block z-50 transition-opacity duration-200">
+                                <div class="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 transition-all duration-200"
+                                    x-show="open"
+                                    x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="opacity-0 scale-95"
+                                    x-transition:enter-end="opacity-100 scale-100"
+                                    x-transition:leave="transition ease-in duration-150"
+                                    x-transition:leave-start="opacity-100 scale-100"
+                                    x-transition:leave-end="opacity-0 scale-95"
+                                    @mouseleave="if(window.innerWidth >= 768) open = false"
+                                    @click.outside="open = false">
                                     <div class="py-1">
-                                        <a href="{{route('users.profile')}}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-[#BF8e43]/10 dark:hover:bg-gray-700 transition-colors duration-150">Profile</a>
+                                        <a href="{{route('users.profile')}}" 
+                                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-[#BF8e43]/10 dark:hover:bg-gray-700 transition-colors duration-150"
+                                           @click="open = false">
+                                            Profile
+                                        </a>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
-                                            <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-[#BF8e43]/10 dark:hover:bg-gray-700 transition-colors duration-150">
+                                            <button type="submit" 
+                                                    class="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-[#BF8e43]/10 dark:hover:bg-gray-700 transition-colors duration-150">
                                                 Logout
                                             </button>
                                         </form>
@@ -80,31 +95,32 @@
         </nav>
     </header>
 
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuButton = document.querySelector('[data-collapse-toggle="navbar-default"]');
             const menu = document.getElementById('navbar-default');
             
             menuButton.addEventListener('click', function() {
-                const expanded = menu.classList.toggle('hidden') === false;
-                menuButton.setAttribute('aria-expanded', expanded);
+                const expanded = menu.classList.toggle('hidden');
+                menuButton.setAttribute('aria-expanded', !expanded);
                 
                 const icon = menuButton.querySelector('svg');
-                if (expanded) {
+                if (!expanded) {
                     icon.innerHTML = '<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
                 } else {
                     icon.innerHTML = '<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>';
                 }
             });
 
-            document.addEventListener('click', function(event) {
-                const dropdowns = document.querySelectorAll('.group');
-                dropdowns.forEach(dropdown => {
-                    if (!dropdown.contains(event.target)) {
-                        const menu = dropdown.querySelector('.hidden');
-                        if (menu && !menu.classList.contains('hidden')) {
-                            menu.classList.add('hidden');
-                        }
+            const navLinks = document.querySelectorAll('#navbar-default a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        menu.classList.add('hidden');
+                        menuButton.setAttribute('aria-expanded', 'false');
+                        menuButton.querySelector('svg').innerHTML = '<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>';
                     }
                 });
             });

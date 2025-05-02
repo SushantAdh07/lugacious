@@ -25,7 +25,6 @@
                     class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">Sign
                     Up</a>
             </div>
-            <!-- Mobile menu button -->
             <div class="md:hidden flex items-center">
                 <button class="outline-none mobile-menu-button">
                     <svg class="w-6 h-6 text-gray-500 hover:text-green-500" x-show="!showMenu" fill="none"

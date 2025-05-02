@@ -36,19 +36,16 @@
                 </div>
             </div>
 
-            <!-- Glass Store Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                 @foreach ($stores as $store)
                     <div
                         class="group relative backdrop-blur-md bg-white/20 border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-white/10 hover:border-[#BF8e43]/30 hover:shadow-glass-lg">
-                        <!-- Store Image with Glass Overlay -->
                         <div class="relative h-72 overflow-hidden">
                             <div
                                 class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50 z-10">
                             </div>
                             <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 src="{{ asset('storage/' . $store->store_image) }}" alt="{{ $store->store_name }}">
-                            <!-- Glass Info Panel -->
                             <div class="absolute bottom-0 left-0 right-0 p-6 z-20">
                                 <h3 class="text-xl font-bold text-white group-hover:text-[#BF8e43] transition-colors">
                                     {{ $store->store_name }}

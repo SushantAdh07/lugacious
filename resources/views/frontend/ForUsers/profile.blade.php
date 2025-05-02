@@ -2,9 +2,8 @@
 @section('hero')
 <div class="bg-[#FAF7F6] dark:bg-gray-900 min-h-screen">
     <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 py-8">
-        <!-- Header with Back Button -->
         <div class="flex items-center mb-8">
-            <a href="{{ route('home') }}" class="p-2 rounded-full hover:bg-[#BF8e43]/10 transition-all duration-300">
+            <a href="{{ url()->previous() }}" class="p-2 rounded-full hover:bg-[#BF8e43]/10 transition-all duration-300">
                 <svg class="w-6 h-6 text-[#BF8e43]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                 </svg>
@@ -12,9 +11,7 @@
             <h1 class="text-2xl font-bold text-gray-800 dark:text-white ml-4">My Profile</h1>
         </div>
 
-        <!-- Profile Card -->
         <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm overflow-hidden mb-8">
-            <!-- Profile Header with Gradient -->
             <div class="relative bg-gradient-to-r from-[#BF8e43]/10 to-[#BF8e43]/25 p-6">
                 <div class="flex flex-col items-center">
                     <div class="w-32 h-32 rounded-full relative">
@@ -22,7 +19,6 @@
                     </div>
                     <h2 class="text-2xl font-bold text-gray-800 dark:text-white mt-4">{{ $user->name }}</h2>
                     
-                    <!-- Verification Status -->
                     <div class="mt-2">
                         @if (Auth::user()->email_verified_at)
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
@@ -45,7 +41,6 @@
                 </div>
             </div>
 
-            <!-- Stats Section -->
             <div class="grid grid-cols-3 divide-x divide-gray-200 dark:divide-gray-700 bg-gray-50 dark:bg-gray-700 py-4">
                 <div class="text-center">
                     <p class="text-2xl font-bold text-[#BF8e43]">{{ $user->favoriteStores->count() }}</p>
@@ -62,7 +57,6 @@
             </div>
         </div>
 
-        <!-- Favorites Section -->
         <div class="mb-8">
             <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
                 <svg class="w-5 h-5 text-[#BF8e43] mr-2" fill="currentColor" viewBox="0 0 20 20">

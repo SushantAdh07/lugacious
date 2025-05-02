@@ -7,9 +7,7 @@
 <div class="min-h-screen bg-[#BF8e43] relative overflow-hidden">
     
 
-    <!-- Content Container -->
     <div class="relative z-10 container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <!-- Glass Header Panel -->
         <div class="bg-white/20 border border-white/10 rounded-3xl shadow-glass p-8 mb-16">
             <div class="text-center">
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">
@@ -41,7 +39,6 @@
 
         
 
-        <!-- Glass Store Cards Grid -->
         @if ($results->count() > 0)
         <div class="">
             <h1 class="relative p-4 text-lg text-white font-md">Search Results:</h1>
@@ -49,13 +46,11 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             @foreach ($results as $store)
             <div class="group relative backdrop-blur-md bg-white/20 border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-white/10 hover:border-[#BF8e43]/30 hover:shadow-glass-lg">
-                <!-- Store Image with Glass Overlay -->
                 <div class="relative h-72 overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50 z-10"></div>
                     <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
                          src="{{ asset('storage/' . $store->store_image) }}" 
                          alt="{{ $store->store_name }}">
-                    <!-- Glass Info Panel -->
                     <div class="absolute bottom-0 left-0 right-0 p-6 backdrop-blur-sm z-20">
                         <h3 class="text-xl font-bold text-white group-hover:text-[#BF8e43] transition-colors">
                             {{ $store->store_name }}
@@ -67,17 +62,9 @@
                             <span class="text-sm text-white/80 ml-2"></span>
                         </div>
                     </div>
-                    <!-- Favorite Button 
-                    <div class="absolute top-5 right-5 z-20">
-                        <button class="p-2.5 backdrop-blur-sm bg-black/50 rounded-full text-white hover:text-[#BF8e43] transition-colors border border-white/10 hover:border-[#BF8e43] shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </button>
-                    </div> -->
+                    
                 </div>
 
-                <!-- Store Details -->
                 <div class="p-4">
                     <p class="text-gray-200 mb-5 line-clamp-2 min-h-[3rem] text-md">
                         {{ Str::limit($store->store_description, 75, '...') }}
