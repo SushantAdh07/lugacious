@@ -27,6 +27,6 @@ class FeedbackController extends Controller
             'feedback' =>$request->feedback,
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your feedback has been submitted successfully!');
     }
 }

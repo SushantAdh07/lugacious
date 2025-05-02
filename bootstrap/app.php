@@ -18,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'verified.email' => VerifiedMiddleware::class,
             'custom.auth' => AuthMiddleware::class,
+            'admin' => RoleMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
