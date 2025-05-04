@@ -73,4 +73,9 @@ Route::get('/admin', function(){
     return view('backend.admin-dashboard');
 })->middleware(App\Http\Middleware\AuthMiddleware::class);
 
+//errors-test
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
+
 require __DIR__.'/auth.php';
