@@ -17,7 +17,7 @@
                 @auth
                     @if(Auth::user()->role === 'admin')
                         <span class="mx-2">•</span>
-                        <a href="{{ route('edit-blog', $blog->id) }}" class="text-[#BF8E43] hover:underline">Edit</a>
+                        <a href="" class="text-[#BF8E43] hover:underline">Edit</a>
                     @endif
                 @endauth
             </div>

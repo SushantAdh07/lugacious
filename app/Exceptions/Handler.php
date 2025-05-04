@@ -3,8 +3,13 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+use Throwable;
 
 class Handler extends Exception
 {
@@ -16,11 +21,14 @@ class Handler extends Exception
         //
     }
 
+    
+
     /**
      * Render the exception as an HTTP response.
      */
-    public function render(Request $request): Response
-    {
-        //
-    }
+    public function render($request, Throwable $exception)
+{
+    
 }
+}
+

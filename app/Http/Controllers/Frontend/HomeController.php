@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $search = $request->input('search');
 
-        $results = Store::where('store_name', 'like', "%{$search}%")
+        $results = Store::where('store_name', 'like', "%{$search}%")->orderBy('store_name', 'asc')
             ->get();
 
         

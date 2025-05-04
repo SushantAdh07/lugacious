@@ -15,14 +15,14 @@
                     <p class="text-white max-w-2xl mx-auto">Discover the nepal's most exclusive and trusted Instagram fashion stores</p>
                     <div
                         class="relative inline-block mt-8 w-full max-w-2xl backdrop-blur-sm bg-white/5 rounded-full border border-white/10">
-                        <form action="{{ route('search.store') }}" method="GET" class="relative">
+                        <form action="{{ route('search.store') }}" method="GET" class="relative" id="search-form">
                             <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-white">
                                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </div>
-                            <input type="text" name="search" placeholder="Search stores..."
+                            <input type="text" name="search" placeholder="Search stores..." id="search-input"
                                 class="w-full py-4 pl-14 pr-16 bg-transparent text-white placeholder-white/70 border border-none focus:ring-1 focus:ring-[#BF8e43] focus:border-[#BF8e43] focus:outline-none transition-all duration-300">
                             <button type="submit"
                                 class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-[#BF8e43] text-white rounded-full p-2 hover:bg-[#d9a95b] transition-colors shadow-gold">
@@ -102,4 +102,5 @@
             @endif
         </div>
     </div>
+    
 @endsection
