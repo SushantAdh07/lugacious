@@ -15,7 +15,7 @@
                 </h1>
                 <p class="text-white max-w-2xl mx-auto">Discover the world's most exclusive fashion boutiques and emerging designers</p>
                 <div class="relative inline-block mt-8 w-full max-w-2xl backdrop-blur-sm bg-white/5 rounded-full border border-white/10">
-                    <form action="{{ route('search.store') }}" method="GET" class="relative">
+                    <form action="{{ route('search.store') }}" method="GET" id="search-form" class="relative">
                         <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-white">
                             <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
@@ -24,6 +24,7 @@
                         <input 
                             type="text" 
                             name="search"
+                            id="search-input"
                             placeholder="Search stores..." 
                             class="w-full py-4 pl-14 pr-16 bg-transparent text-white placeholder-white/70 border border-none focus:ring-1 focus:ring-[#BF8e43] focus:border-[#BF8e43] focus:outline-none transition-all duration-300"
                         >
@@ -88,5 +89,6 @@
         @endif
     </div>
 </div>
+
 
 @endsection
