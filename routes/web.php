@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ForUsers\FeedbackController;
 use App\Http\Controllers\Frontend\ForUsers\ProfileController as ForUsersProfileController;
@@ -69,13 +70,14 @@ Route::controller(BlogController::class)->group(function(){
 });
 
 //Backend
-Route::get('/admin', function(){
-    return view('backend.admin-dashboard');
-})->middleware(App\Http\Middleware\AuthMiddleware::class);
+Route::get('/admin', [AdminController::class, 'index'])->middleware(App\Http\Middleware\AuthMiddleware::class);
+
+
 
 //errors-test
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });
+
 
 require __DIR__.'/auth.php';

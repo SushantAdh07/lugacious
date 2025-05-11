@@ -10,10 +10,24 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body>
+<body class="bg-gray-100 text-gray-800 font-sans">
    
-    {{ View::make('backend.Body.sidebar') }}
-    @yield('content')
+
+  
+{{ View::make('backend.Body.header') }}
+  <!-- Layout -->
+  <div class="flex pt-20">
+
+        
+
+    
+        {{ View::make('backend.Body.sidebar') }}
+        @yield('content')
+
+    
+  </div>
+
+
 </body>
 
 </html>
